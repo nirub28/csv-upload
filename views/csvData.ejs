@@ -1,0 +1,32 @@
+  <link rel="stylesheet" href="/css/csvData.css" />
+
+  <title><%= title %></title>
+
+  <h2>CSV Data: <%= filename %></h2> 
+  
+  <div>
+  <input type="text" id="search-input" placeholder="Search...">
+  </div>
+   <hr>
+  <table class="csv-table">
+    <thead>
+      <tr>
+        <% Object.keys(data[0]).forEach(function(column) { %>
+          <th><%= column %></th>
+        <% }); %>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.forEach(function(row) { %>
+        <tr>
+          <% Object.values(row).forEach(function(value) { %>
+            <td><%= value %></td>
+          <% }); %>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+
+  <script src="/js/csvData.js"></script>
+

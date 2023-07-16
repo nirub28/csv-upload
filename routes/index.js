@@ -4,8 +4,7 @@ const homeController = require("../controllers/home_controller.js");
 
 
 router.get("/", homeController.home);
-// router.use("/users", require("./users"));
-// router.use("/student", require("./student"));
-// router.use("/interviews", require("./interview"));
+router.use("/files", require("./files.js"));
+
 
 module.exports = router;

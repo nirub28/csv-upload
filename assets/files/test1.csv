@@ -1,0 +1,7 @@
+Student ID,Student Name,Batch,Student College,Student Status,DSA Final Score,WebD Final Score,React Final Score,Interview Date,Interview Company,Interview Student Result
+niru@gmail.com,Niru,2018,TOCE,Placed,90,95,94,2023-07-26,TCS,PASS
+niru@gmail.com,Niru,2018,TOCE,Placed,90,95,94,2023-07-21,Accenture,PASS
+niru@gmail.com,Niru,2018,TOCE,Placed,90,95,94,2023-07-14,IBM,PASS
+abhi@gmail.com,Abhi,2019,JNB,Not_Placed,90,80,65,2023-07-26,TCS,FAIL
+abhi@gmail.com,Abhi,2019,JNB,Not_Placed,90,80,65,2023-07-14,IBM,FAIL
+raki@gmail.com,Rakesh,2023,TOCE,Not_Placed,80,90,81,2023-07-14,IBM,Did not Attempt

@@ -1,4 +1,25 @@
 <link rel="stylesheet" href="/css/home.css" />
 
 
-<h2 class="hh">Nice, home is loading</h2>
+
+<div class="div-home">
+
+    <form action="/files/upload"  enctype="multipart/form-data" method="post">
+        <h3>Upload CSV file</h3>
+        <input type="file" name="csv-file" placeholder="CSV File">
+        <input type="submit" value="Update">
+      </form>
+
+
+
+      <section id="files-all">
+        <h4>CSV Files</h4>
+        <ul>
+          <% files.forEach(function(file) { %>
+            <li><a href="/files/getdata/<%= file %>"><%= file %></a></li>
+          <% }); %>
+        </ul>
+      </section>
+</div>
+
+<script src="/js/home.js"></script>

@@ -12,3 +12,56 @@ table {
     background-color: #767373;
   }
   
+  a{
+    margin-left: 10px;
+    text-decoration: none;
+    color: black;
+  }
+  a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    color: white;
+    background-color: black;
+  }
+  #pagination{
+    margin-left: 35%;
+  }
+  span{
+    font-weight: bold;
+  }
+  .sort-btn{
+    width: 30px;
+    height: 20px;
+  }
+  .top-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .head2{
+    margin-left: 50px;
+  }
+  .search-div {
+    display: flex;
+    align-items: center;
+    background-color: green;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 350px;
+    height: 40px;
+    margin-top: 15px;
+  }
+  
+  .search-div input[type="text"] {
+    width: 100%;
+    padding: 9px;
+    border: none;
+    background-color: transparent;
+    color: white;
+  }
+  
+  .search-div input[type="text"]::placeholder {
+    color: white;
+    opacity: 0.7;
+  }
+  

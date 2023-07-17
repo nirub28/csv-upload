@@ -14,5 +14,6 @@ header {
   .app-name:hover {
     cursor: pointer;
     text-decoration: none !important;
+    background-color: #28379d !important;
   }
  

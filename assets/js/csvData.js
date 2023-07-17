@@ -1,3 +1,59 @@
+var rowsPerPage = 100; // Number of rows to display per page
+var currentPage = 1; // Current page
+
+function updateTable() {
+  var startIndex = (currentPage - 1) * rowsPerPage;
+  var endIndex = startIndex + rowsPerPage;
+
+  var rows = document.querySelectorAll('.csv-table tbody tr');
+  var totalRows = rows.length;
+
+  rows.forEach(function(row, index) {
+    if (index >= startIndex && index < endIndex) {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+
+  createPagination(totalRows);
+}
+
+function createPagination(totalRows) {
+  var totalPages = Math.ceil(totalRows / rowsPerPage);
+  var pagination = document.getElementById('pagination');
+  pagination.innerHTML = '';
+
+  var paginationContainer = document.createElement('div');
+  paginationContainer.classList.add('pagination-container');
+
+  var pagesText = document.createElement('span');
+  pagesText.textContent = 'Pages:';
+  paginationContainer.appendChild(pagesText);
+
+  for (var i = 1; i <= totalPages; i++) {
+    var pageLink = document.createElement('a');
+    pageLink.href = '#';
+    pageLink.textContent = i;
+    pageLink.classList.add('page-link');
+
+    if (i === currentPage) {
+      pageLink.classList.add('active');
+    }
+
+    pageLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      currentPage = parseInt(this.textContent);
+      updateTable();
+    });
+
+    paginationContainer.appendChild(pageLink);
+  }
+
+  pagination.appendChild(paginationContainer);
+}
+
+
 document.getElementById('search-input').addEventListener('input', function () {
   var searchTerm = this.value.toLowerCase();
   filterTable(searchTerm);
@@ -5,14 +61,17 @@ document.getElementById('search-input').addEventListener('input', function () {
 
 function filterTable(searchTerm) {
   var rows = document.querySelectorAll('.csv-table tbody tr');
-  for (var i = 0; i < rows.length; i++) {
-    var row = rows[i];
+  var totalRows = rows.length;
+
+  rows.forEach(function(row) {
     var firstCell = row.querySelector('td:first-child');
     var cellText = firstCell.textContent.toLowerCase();
     var shouldShowRow = cellText.includes(searchTerm);
 
     row.style.display = shouldShowRow ? '' : 'none';
-  }
+  });
+
+  createPagination(totalRows);
 }
 
 const sortButtons = document.querySelectorAll('.sort-btn');
@@ -22,23 +81,22 @@ sortButtons.forEach(button => {
     const column = this.dataset.column;
     const isAscending = this.classList.contains('asc');
 
-    // Remove sorting from all buttons
     sortButtons.forEach(btn => {
       btn.classList.remove('asc', 'desc');
       btn.textContent = '▲';
     });
 
     if (isAscending) {
-      // Ascending button clicked, sort in descending order
       this.classList.add('desc');
       this.textContent = '▼';
       sortTable(column, false);
     } else {
-      // Descending button clicked or no sorting applied, sort in ascending order
       this.classList.add('asc');
       this.textContent = '▲';
       sortTable(column, true);
     }
+
+    updateTable();
   });
 });
 
@@ -73,3 +131,6 @@ function sortTable(column, isAscending) {
     tbody.appendChild(row);
   });
 }
+
+// Initial table setup
+updateTable();

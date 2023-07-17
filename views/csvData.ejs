@@ -2,34 +2,41 @@
 
 <title><%= title %></title>
 
-<h2>CSV Data: <%= filename %></h2> 
+<div class="top-div">
+<h2 class="head2">CSV Data: <%= filename %></h2> 
 
-<div>
+<div class="search-div">
   <input type="text" id="search-input" placeholder="Search...">
 </div>
+</div>
+
 <hr>
 <table class="csv-table">
-    <thead>
-        <tr>
-          <% headers.forEach(function(column) { %>
-            <th>
-              <%= column %>
-              <div>
-                <button class="sort-btn asc"  data-column="<%= column %>">▲</button>
-              </div>
-            </th>
-          <% }); %>
-        </tr>
-      </thead>      
-  <tbody>
+  <thead>
+    <tr>
+      <% headers.forEach(function(column) { %>
+        <th>
+          <%= column %>
+          <div>
+            <button class="sort-btn asc" data-column="<%= column %>">▲</button>
+          </div>
+        </th>
+      <% }); %>
+    </tr>
+  </thead>
+  <tbody id="table-body">
     <% data.forEach(function(row) { %>
       <tr>
         <% headers.forEach(function(column) { %>
           <td data-column="<%= column %>"><%= row[column] %></td>
       <% }); %>
       </tr>
-    <% }); %>
-  </tbody>
+    <% }); %>  </tbody>
 </table>
+
+<div id="pagination-container">
+  <ul id="pagination">
+  </ul>
+</div>
 
 <script src="/js/csvData.js"></script>

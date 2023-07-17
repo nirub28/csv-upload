@@ -1,32 +1,35 @@
-  <link rel="stylesheet" href="/css/csvData.css" />
+<link rel="stylesheet" href="/css/csvData.css" />
 
-  <title><%= title %></title>
+<title><%= title %></title>
 
-  <h2>CSV Data: <%= filename %></h2> 
-  
-  <div>
+<h2>CSV Data: <%= filename %></h2> 
+
+<div>
   <input type="text" id="search-input" placeholder="Search...">
-  </div>
-   <hr>
-  <table class="csv-table">
+</div>
+<hr>
+<table class="csv-table">
     <thead>
-      <tr>
-        <% Object.keys(data[0]).forEach(function(column) { %>
-          <th><%= column %></th>
-        <% }); %>
-      </tr>
-    </thead>
-    <tbody>
-      <% data.forEach(function(row) { %>
         <tr>
-          <% Object.values(row).forEach(function(value) { %>
-            <td><%= value %></td>
+          <% headers.forEach(function(column) { %>
+            <th>
+              <%= column %>
+              <div>
+                <button class="sort-btn asc"  data-column="<%= column %>">▲</button>
+              </div>
+            </th>
           <% }); %>
         </tr>
+      </thead>      
+  <tbody>
+    <% data.forEach(function(row) { %>
+      <tr>
+        <% headers.forEach(function(column) { %>
+          <td data-column="<%= column %>"><%= row[column] %></td>
       <% }); %>
-    </tbody>
-  </table>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
 
-
-  <script src="/js/csvData.js"></script>
-
+<script src="/js/csvData.js"></script>

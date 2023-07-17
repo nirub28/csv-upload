@@ -14,15 +14,23 @@ const storage = multer.diskStorage({
   }
 });
 
-// Initialize the Multer middleware
-const upload = multer({ storage: storage });
+// A file type filter function
+const csvFileFilter = function (req, file, cb) {
+  // Check if the file is a CSV file
+  if (file.mimetype === 'text/csv' || file.mimetype === 'application/vnd.ms-excel') {
+    cb(null, true);
+  } else {
+    cb(new Error('Only CSV files are allowed!'), false);
+  }
+};
+
+// Initializing the Multer middleware with the file type filter
+const upload = multer({ storage: storage, fileFilter: csvFileFilter });
 
 router.post('/upload', upload.single('csv-file'), function (req, res) {
-  res.send('File uploaded successfully!');
+  res.redirect('/');
 });
 
-
-router.get('/getdata/:filename',fileController.getData);
-
+router.get('/getdata/:filename', fileController.getData);
 
 module.exports = router;

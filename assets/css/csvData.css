@@ -47,7 +47,7 @@ table {
     background-color: green;
     padding: 5px;
     border-radius: 5px;
-    margin-right: 350px;
+    margin-right: -150px;
     height: 40px;
     margin-top: 15px;
   }
@@ -64,4 +64,20 @@ table {
     color: white;
     opacity: 0.7;
   }
-  
+  .delete-button{
+    background-color: red;
+    margin-top: 30px;
+    width: 100px;
+    height: 30px;
+    margin-right: 50px;
+  }
+  .delete-button:hover {
+    cursor: pointer;
+    background-color: red !important;
+    color: white;
+  }
+  a.delete-button-a:hover {
+    cursor: pointer;
+    background-color: white !important;
+    color: white;
+  }

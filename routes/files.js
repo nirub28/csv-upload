@@ -32,5 +32,7 @@ router.post('/upload', upload.single('csv-file'), function (req, res) {
 });
 
 router.get('/getdata/:filename', fileController.getData);
+router.get('/delete/:filename', fileController.deleteFile);
+
 
 module.exports = router;

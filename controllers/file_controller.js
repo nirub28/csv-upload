@@ -23,3 +23,16 @@ exports.getData = function (req, res) {
       });
   };
   
+
+  exports.deleteFile = function (req, res) {
+    const filename = req.params.filename;
+    const filePath = path.join(__dirname, '../assets/files', filename);
+  
+    fs.unlink(filePath, (err) => {
+      if (err) {
+        res.redirect('/'); 
+      } else {
+        res.redirect('/'); 
+      }
+    });
+  };
